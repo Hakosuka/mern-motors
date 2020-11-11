@@ -54,7 +54,6 @@ export default class AddVehicle extends Component {
 			vehicle_fuel: e.target.value
 		});
 	}
-	//TODO: figure out why I can't use the radio buttons
 	render(){
 		return(
 			<div style={{marginTop: 10}}>
@@ -166,7 +165,7 @@ export default class AddVehicle extends Component {
 		const hesGotABrandNewCar = {
 			//TODO: assign properties from the entered form
 		};
-		
+		//TODO: install Axios
 		//axios.post('http://localhost:4000/vehicles/add', hesGotABrandNewCar)	.then(res => console.log(res.data));
 			
 		this.setState({	

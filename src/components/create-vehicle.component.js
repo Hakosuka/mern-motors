@@ -16,8 +16,8 @@ export default class AddVehicle extends Component {
 		this.state = {
 			vehicle_make: "",
 			vehicle_model: "",
-			vehicle_year: 1970,
-			vehicle_price: null,
+			vehicle_year: 1970, 
+			vehicle_price: 0,
 			vehicle_description: "",
 			vehicle_fuel: "",
 			vehicle_sold: false
@@ -41,7 +41,7 @@ export default class AddVehicle extends Component {
 	}
 	onChangeVehiclePrice(e){
 		this.setState({
-			vehicle_fuel: e.target.value
+			vehicle_price: e.target.value
 		});
 	}
 	onChangeVehicleDescription(e){
@@ -51,7 +51,7 @@ export default class AddVehicle extends Component {
 	}
 	onChangeVehicleFuel(e){
 		this.setState({
-			vehicle_sold: e.target.value
+			vehicle_fuel: e.target.value
 		});
 	}
 	//TODO: figure out why I can't use the radio buttons

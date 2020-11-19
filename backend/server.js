@@ -20,52 +20,52 @@ connection.once('open', function(){
 })
 
 //Handles GET requests for the entire vehicle list.
-vehicleRoutes.route('/').get(function(req, res){
+vehicleRoutes.route('/').get(function(request, response){
     Vehicle.find(function(err, allVehicles){
         if(err) {
             console.log(err);
         } else {
-            res.json(allVehicles);
+            response.json(allVehicles);
         }
     })
 });
 
 //Handles GET requests for a specific vehicle
-vehicleRoutes.route('/:id').get(function(req, res){
-    let vehicleId = req.params.id;
+vehicleRoutes.route('/:id').get(function(request, response){
+    let vehicleId = request.params.id;
     Vehicle.findById(vehicleId, function(err, selectedVehicle){
-        res.json(selectedVehicle);
+        response.json(selectedVehicle);
     });
 });
 
 //POSTS updates to vehicles in the database
-vehicleRoutes.route('/update/:id').post(function(req, res){
-    Vehicle.findById(req.params.id, function(err, selectedVehicle){
+vehicleRoutes.route('/edit/:id').post(function(request, response){
+    Vehicle.findById(request.params.id, function(err, selectedVehicle){
         if(!selectedVehicle)
-            res.status(404).send("No vehicle found for requested ID.");
+            response.status(404).send("No vehicle found for requested ID.");
         else
-            selectedVehicle.vehicle_make = req.body.vehicle_make;
-            selectedVehicle.vehicle_model = req.body.vehicle_model;
-            selectedVehicle.vehicle_year = req.body.vehicle_year;
-            selectedVehicle.vehicle_price = req.body.vehicle_price;
-            selectedVehicle.vehicle_description = req.body.vehicle_description;
-            selectedVehicle.vehicle_fuel = req.body.vehicle_fuel;
+            selectedVehicle.vehicle_make = request.body.vehicle_make;
+            selectedVehicle.vehicle_model = request.body.vehicle_model;
+            selectedVehicle.vehicle_year = request.body.vehicle_year;
+            selectedVehicle.vehicle_price = request.body.vehicle_price;
+            selectedVehicle.vehicle_description = request.body.vehicle_description;
+            selectedVehicle.vehicle_fuel = request.body.vehicle_fuel;
 
             selectedVehicle.save().then(selectedVehicle => {
-                res.json("Vehicle updated!");
+                response.json("Vehicle updated!");
             }).catch(err => {
-                res.status(400).send("Update failed.");
+                response.status(400).send("Update failed.");
             });
     });
 });
 
 //POSTS new vehicles to the database
-vehicleRoutes.route('/create').post(function(req, res){
-    let newVehicle = new Vehicle(req.body);
+vehicleRoutes.route('/add').post(function(request, response){
+    let newVehicle = new Vehicle(request.body);
     newVehicle.save().then(newVehicle => {
-        res.status(200).json({'Vehicle': 'New vehicle added successfully.'});
+        response.status(200).json({'Vehicle': 'New vehicle added successfully.'});
     }).catch(err => {
-        res.status(400).send('Creation of new vehicle failed.')
+        response.status(400).send('Creation of new vehicle failed.')
     });
 });
 

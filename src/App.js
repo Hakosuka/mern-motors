@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import AddVehicle from "./components/create-vehicle.component";
+import CreateVehicle from "./components/create-vehicle.component";
 import EditVehicle from "./components/edit-vehicle.component";
 import VehiclesList from "./components/vehicles-list.component";
 
@@ -19,14 +19,14 @@ class App extends Component {
 						<div className="collapse navbar-collapse">
 							<ul className="navbar-nav mr-auto">
 								<li className="navbar-item"><Link to="/" className="nav-link">All vehicles</Link></li>
-								<li className="navbar-item"><Link to="/create" className="nav-link">Add vehicle</Link></li>
+								<li className="navbar-item"><Link to="/add" className="nav-link">Create vehicle</Link></li>
 							</ul>
 						</div>
 					</nav>
 				<br/>
 				<Route path="/" exact component={VehiclesList} />
 				<Route path="/edit/:id" component={EditVehicle} />
-				<Route path="/create" component={AddVehicle} />
+				<Route path="/add" component={CreateVehicle} />
 				</div>
 			</Router>
 		);

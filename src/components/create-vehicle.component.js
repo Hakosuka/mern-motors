@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
-export default class AddVehicle extends Component {
+export default class CreateVehicle extends Component {
 	constructor(props){
 		super(props);
 		//Set up bindings
@@ -54,6 +54,7 @@ export default class AddVehicle extends Component {
 			vehicle_fuel: e.target.value
 		});
 	}
+	//JSX code to show the form
 	render(){
 		return(
 			<div style={{marginTop: 10}}>
@@ -163,10 +164,15 @@ export default class AddVehicle extends Component {
 		console.log(`Form submitted:`);
 		console.log(`Vehicle name: ${this.state.vehicle_year} ${this.state.vehicle_make} ${this.state.vehicle_model}`);
 		const hesGotABrandNewCar = {
-			//TODO: assign properties from the entered form
+			vehicle_make: this.state.vehicle_make,
+			vehicle_model: this.state.vehicle_model,
+			vehicle_year: this.state.vehicle_year,
+			vehicle_price: this.state.vehicle_price,
+			vehicle_description: this.state.vehicle_description,
+			vehicle_fuel: this.state.vehicle_fuel
 		};
-		//TODO: install Axios
-		//axios.post('http://localhost:4000/vehicles/add', hesGotABrandNewCar)	.then(res => console.log(res.data));
+		axios.post('http://localhost:4008/vehicles/add', hesGotABrandNewCar)	
+			.then(response => console.log(response.data));
 			
 		this.setState({	
 			vehicle_make: "",

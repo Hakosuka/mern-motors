@@ -75,14 +75,14 @@ export default class AddVehicle extends Component {
 					</div>
 					<div className="form-group">
 						<label>Year: </label>
-						<input type="text"
+						<input type="number"
 							className="form-control"
 							value={this.state.vehicle_year}
 							onChange={this.onChangeVehicleYear}/>
 					</div>
 					<div className="form-group">
 						<label>Price: </label>
-						<input type="text"
+						<input type="number"
 							className="form-control"
 							value={this.state.vehicle_price}
 							onChange={this.onChangeVehiclePrice}/>

@@ -169,7 +169,8 @@ export default class CreateVehicle extends Component {
 			vehicle_year: this.state.vehicle_year,
 			vehicle_price: this.state.vehicle_price,
 			vehicle_description: this.state.vehicle_description,
-			vehicle_fuel: this.state.vehicle_fuel
+			vehicle_fuel: this.state.vehicle_fuel,
+			vehicle_sold: this.state.vehicle_sold
 		};
 		axios.post('http://localhost:4008/vehicles/add', hesGotABrandNewCar)	
 			.then(response => console.log(response.data));

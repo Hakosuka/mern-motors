@@ -50,7 +50,8 @@ vehicleRoutes.route('/edit/:id').post(function(request, response){
             selectedVehicle.vehicle_price = request.body.vehicle_price;
             selectedVehicle.vehicle_description = request.body.vehicle_description;
             selectedVehicle.vehicle_fuel = request.body.vehicle_fuel;
-
+            selectedVehicle.vehicle_sold = request.body.vehicle_sold;
+            
             selectedVehicle.save().then(selectedVehicle => {
                 response.json("Vehicle updated!");
             }).catch(err => {

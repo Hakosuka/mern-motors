@@ -19,6 +19,9 @@ let Vehicle = new Schema({
     },
     vehicle_fuel: {
         type: String
+    },
+    vehicle_sold: {
+        type: Boolean
     }
 });
 

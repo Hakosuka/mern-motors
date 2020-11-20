@@ -4,12 +4,12 @@ import axios from 'axios';
 
 const Vehicle = props => (
 	<tr>
-		<td>{props.vehicle.vehicle_make}</td>
-		<td>{props.vehicle.vehicle_model}</td>
-		<td>{props.vehicle.vehicle_year}</td>
-		<td>{props.vehicle.vehicle_price}</td>
-		<td>{props.vehicle.vehicle_description}</td>
-		<td>{props.vehicle.vehicle_fuel}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_make}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_model}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_year}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_price}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_description}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_fuel}</td>
 		<td>
 			<Link to={"/edit/"+props.vehicle._id}>Edit</Link>
 		</td>

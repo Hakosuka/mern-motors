@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+//TODO: Implement search filters
+//This formats the Vehicle data for the table which will show the Vehicles.
 const Vehicle = props => (
 	<tr>
 		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_make}</td>
@@ -28,6 +30,10 @@ export default class VehiclesList extends Component {
 				console.log(error);
 			})
 	}
+	/**
+	 * This accesses the retrieved Vehicle objects and renders them in a list.
+	 * @returns the list of Vehicles
+	 */
 	vehicleList() {
 		return this.state.vehicles.map(function(currentVehicle, listIndex){
 			return <Vehicle vehicle={currentVehicle} key={listIndex}/>;

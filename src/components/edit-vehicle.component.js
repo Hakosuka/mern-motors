@@ -78,7 +78,6 @@ export default class EditVehicle extends Component {
 		});
 	}
 	render(){
-		//TODO: Enable the user to edit the selected vehicle
 		return(
 			<div>
 				<h3 align="center">Edit Vehicle</h3>

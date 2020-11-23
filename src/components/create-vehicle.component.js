@@ -163,7 +163,7 @@ export default class CreateVehicle extends Component {
 		e.preventDefault(); //prevents default HTML form submission behaviour as the back-end isn't implemented yet
 		console.log(`Form submitted:`);
 		console.log(`Vehicle name: ${this.state.vehicle_year} ${this.state.vehicle_make} ${this.state.vehicle_model}`);
-		const hesGotABrandNewCar = {
+		const new_vehicle = {
 			vehicle_make: this.state.vehicle_make,
 			vehicle_model: this.state.vehicle_model,
 			vehicle_year: this.state.vehicle_year,
@@ -172,9 +172,10 @@ export default class CreateVehicle extends Component {
 			vehicle_fuel: this.state.vehicle_fuel,
 			vehicle_sold: this.state.vehicle_sold
 		};
-		axios.post('http://localhost:4008/vehicles/add', hesGotABrandNewCar)	
+		//POST the new vehicle's data to the database
+		axios.post('http://localhost:4008/vehicles/add', new_vehicle)	
 			.then(response => console.log(response.data));
-			
+		//Reset the input fields	
 		this.setState({	
 			vehicle_make: "",
 			vehicle_model: "",

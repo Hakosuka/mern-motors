@@ -61,9 +61,13 @@ export default class VehiclesList extends Component {
 	render(){
 		return(
 			<div>
-				<select>
+				<form hidden>
+					<select >
+					<option selected>--Select a manufacturer--</option>
 					{ this.vehicleMakesList() }
-				</select>
+					</select>
+					<input type="submit" value="Apply filter"/>
+				</form>
 				<h3>Vehicles List</h3>
 				<table className="table table-striped">
 					<thead>

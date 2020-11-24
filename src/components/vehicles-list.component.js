@@ -17,6 +17,10 @@ const Vehicle = props => (
 		</td>
 	</tr>
 )
+//Populates the dropdown menu with all of the makes of the Vehicles in the database
+const MakeOption = props => (
+	<option>{props.vehicle.vehicle_make}</option>
+)
 export default class VehiclesList extends Component {
 	constructor(props){
 		super(props);
@@ -35,13 +39,31 @@ export default class VehiclesList extends Component {
 	 * @returns the list of Vehicles
 	 */
 	vehicleList() {
+		console.log("Accessing vehicle list");
 		return this.state.vehicles.map(function(currentVehicle, listIndex){
+			console.log(currentVehicle);
 			return <Vehicle vehicle={currentVehicle} key={listIndex}/>;
 		})
 	}
+	/**
+	 * This uses the database to populate a dropdown menu with the makes of the vehicles in the DB.
+	 * @returns the list of Vehicle makes
+	 * TODO: Only show each make once
+	 * TODO: Use the selected option to filter results from the DB
+	 */
+	vehicleMakesList(){
+		return this.state.vehicles.map(function(currentVehicle, listIndex){
+			return <MakeOption vehicle={currentVehicle} key={listIndex}/>;
+		})
+	}
+	//TODO: Implement a way for the user to pick an attribute to sort by
+	//TODO: Implement a filter for results
 	render(){
 		return(
 			<div>
+				<select>
+					{ this.vehicleMakesList() }
+				</select>
 				<h3>Vehicles List</h3>
 				<table className="table table-striped">
 					<thead>

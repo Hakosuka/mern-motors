@@ -174,7 +174,12 @@ export default class CreateVehicle extends Component {
 		};
 		//POST the new vehicle's data to the database
 		axios.post('http://localhost:4008/vehicles/add', new_vehicle)	
-			.then(response => console.log(response.data));
+			.then(function(response){
+				console.log(response.data)
+				if(response.status >=400){
+					//TODO alert the user of the error
+				}
+			});
 		//Reset the input fields	
 		this.setState({	
 			vehicle_make: "",

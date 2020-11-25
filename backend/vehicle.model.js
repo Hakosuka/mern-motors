@@ -9,7 +9,10 @@ let Vehicle = new Schema({
         type: String
     },
     vehicle_year: {
-        type: Number
+        type: Number, 
+        min: 1886, 
+        max: Date.now(),
+        default: 1970
     },
     vehicle_price: {
         type: Number

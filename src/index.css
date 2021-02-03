@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.nav-link:hover {
+  background-color: aqua;
+}
+
 .vehicle_sold {
   text-decoration: line-through;
 }

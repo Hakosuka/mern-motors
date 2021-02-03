@@ -15,6 +15,7 @@ let Vehicle = new Schema({
         default: 1970
     },
     vehicle_price: {
+        min: 0,
         type: Number
     },
     vehicle_description: {

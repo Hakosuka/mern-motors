@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -17,13 +18,12 @@ const Vehicle = props => (
 		</td>
 	</tr>
 )
-//Populates the dropdown menu with all of the makes of the Vehicles in the database
-const MakeOption = props => (
-	<option>{props.vehicle.vehicle_make}</option>
-)
 export default class VehiclesList extends Component {
 	constructor(props){
 		super(props);
+
+		this.onChangeVehicleMakeFilter = this.onChangeVehicleMakeFilter.bind(this);
+
 		this.state = {vehicles: []};
 	}
 	componentDidMount(){
@@ -52,20 +52,29 @@ export default class VehiclesList extends Component {
 	 * TODO: Use the selected option to filter results from the DB
 	 */
 	vehicleMakesList(){
-		return this.state.vehicles.map(function(currentVehicle, listIndex){
-			return <MakeOption vehicle={currentVehicle} key={listIndex}/>;
-		})
+		return this.state.vehicles.map(vehicle => (
+			{label: vehicle.vehicle_make, value: vehicle.vehicle_make	}));
+	}
+	//Set up onChange bindings
+	onChangeVehicleMakeFilter(e){
+		console.log(e.target.value);
+		this.setState({
+			selected_make: e.target.value
+		});
 	}
 	//TODO: Implement a way for the user to pick an attribute to sort by
 	//TODO: Implement a filter for results
 	render(){
 		return(
 			<div>
-				<form hidden>
-					<select >
-					<option selected>--Select a manufacturer--</option>
-					{ this.vehicleMakesList() }
-					</select>
+				<form  onSubmit={this.onSubmit}>
+					<Select 
+						options={ this.vehicleMakesList() }
+						onChange={ 
+							selected_make => console.log("Make selected: " + selected_make.value)
+							//TODO: Apply filter to results
+						}
+					/>
 					<input type="submit" value="Apply filter"/>
 				</form>
 				<h3>Vehicles List</h3>

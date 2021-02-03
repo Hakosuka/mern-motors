@@ -11,6 +11,7 @@ import VehiclesList from "./components/vehicles-list.component";
 
 class App extends Component {
 	render() {
+		//TODO: Stop Navbar hiding options in mobile orientation
 		return(
 			<Router>
 				<div className="container">
@@ -18,8 +19,7 @@ class App extends Component {
 						<Link to="/" className="navbar-brand">MERN Motors</Link>
 						<div className="collapse navbar-collapse">
 							<ul className="navbar-nav mr-auto">
-								<li className="navbar-item"><Link to="/" className="nav-link">All vehicles</Link></li>
-								<li className="navbar-item"><Link to="/add" className="nav-link">Create vehicle</Link></li>
+								<li className="navbar-item"><Link to="/add" className="nav-link">Add vehicle</Link></li>
 							</ul>
 						</div>
 					</nav>

@@ -20,6 +20,7 @@ connection.once('open', function(){
 })
 
 //Handles GET requests for the entire vehicle list.
+//TODO: Let the user choose the sorting criteria
 vehicleRoutes.route('/').get(function(request, response){
     Vehicle.find(function(err, allVehicles){
         if(err) {
@@ -27,7 +28,7 @@ vehicleRoutes.route('/').get(function(request, response){
         } else {
             response.json(allVehicles);
         }
-    })
+    }).sort({ vehicle_make: 1, vehicle_model: 1, vehicle_year: -1}); //Sort by manufacturer, then model, then year
 });
 
 //Handles GET requests for a specific vehicle
@@ -36,6 +37,15 @@ vehicleRoutes.route('/:id').get(function(request, response){
     Vehicle.findById(vehicleId, function(err, selectedVehicle){
         response.json(selectedVehicle);
     });
+});
+
+//Handles GET requests for vehicles of a specific make
+vehicleRoutes.route('/:make').get(function(request, response){
+    var vehicleParam = {};
+    vehicleParam[vehicle_make] = request.params.make;
+    Vehicle.find({vehicleParam}).exec(function(err, selectedMake){
+        response.json(selectedMake);
+    })
 });
 
 //POSTS updates to vehicles in the database

@@ -81,6 +81,13 @@ vehicleRoutes.route('/add').post(function(request, response){
     });
 });
 
+vehicleRoutes.route('/delete/:id').delete(function(request, response){
+    Vehicle.findById(request.params.id)
+    .then(vehicleToDelete => vehicleToDelete.remove().then(
+        ()=> response.json({success: true})))
+    .catch(err => response.status(404).json({success: false}));
+});
+
 app.use('/vehicles', vehicleRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

@@ -158,7 +158,7 @@ export default class CreateVehicle extends Component {
 				</form>
 			</div>
 		)}
-	
+	//TODO: Implement deletions in the UI, preferably with a pop-up warning
 	onSubmit(e){
 		e.preventDefault(); //prevents default HTML form submission behaviour as the back-end isn't implemented yet
 		console.log(`Vehicle added: ${this.state.vehicle_year} 

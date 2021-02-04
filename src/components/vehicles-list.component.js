@@ -7,12 +7,24 @@ import axios from 'axios';
 //This formats the Vehicle data for the table which will show the Vehicles.
 const Vehicle = props => (
 	<tr>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_make}</td>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_model}</td>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_year}</td>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_price}</td>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_description}</td>
-		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>{props.vehicle.vehicle_fuel}</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_make}
+		</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_model}
+		</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_year}
+		</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_price}
+		</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_description}
+		</td>
+		<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+			{props.vehicle.vehicle_fuel}
+		</td>
 		<td>
 			<Link to={"/edit/"+props.vehicle._id}>Edit</Link>
 		</td>
@@ -71,7 +83,8 @@ export default class VehiclesList extends Component {
 					<Select 
 						options={ this.vehicleMakesList() }
 						onChange={ 
-							selected_make => console.log("Make selected: " + selected_make.value)
+							selected_make => 
+							console.log("Make selected: " + selected_make.value)
 							//TODO: Apply filter to results
 						}
 					/>

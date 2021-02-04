@@ -28,7 +28,8 @@ vehicleRoutes.route('/').get(function(request, response){
         } else {
             response.json(allVehicles);
         }
-    }).sort({ vehicle_make: 1, vehicle_model: 1, vehicle_year: -1}); //Sort by manufacturer, then model, then year
+    })  //Sort by manufacturer, then model, then year
+    .sort({ vehicle_make: 1, vehicle_model: 1, vehicle_year: -1}); 
 });
 
 //Handles GET requests for a specific vehicle

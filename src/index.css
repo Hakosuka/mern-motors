@@ -13,7 +13,8 @@ code {
 }
 
 .nav-link:hover {
-  background-color: aqua;
+  background-color: slategrey;
+  color: white;
 }
 
 .vehicle_sold {

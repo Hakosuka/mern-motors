@@ -161,8 +161,8 @@ export default class CreateVehicle extends Component {
 	
 	onSubmit(e){
 		e.preventDefault(); //prevents default HTML form submission behaviour as the back-end isn't implemented yet
-		console.log(`Form submitted:`);
-		console.log(`Vehicle name: ${this.state.vehicle_year} ${this.state.vehicle_make} ${this.state.vehicle_model}`);
+		console.log(`Vehicle added: ${this.state.vehicle_year} 
+			${this.state.vehicle_make} ${this.state.vehicle_model}`);
 		const new_vehicle = {
 			vehicle_make: this.state.vehicle_make,
 			vehicle_model: this.state.vehicle_model,

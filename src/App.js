@@ -15,11 +15,16 @@ class App extends Component {
 		return(
 			<Router>
 				<div className="container">
-					<nav className="navbar navbar-expand-lg navbar-light bg-light">
+					<nav className="navbar navbar-expand-lg 
+					navbar-light bg-light">
 						<Link to="/" className="navbar-brand">MERN Motors</Link>
 						<div className="collapse navbar-collapse">
 							<ul className="navbar-nav mr-auto">
-								<li className="navbar-item"><Link to="/add" className="nav-link">Add vehicle</Link></li>
+								<li className="navbar-item">
+									<Link to="/add" className="nav-link">
+										Add vehicle
+									</Link>
+								</li>
 							</ul>
 						</div>
 					</nav>

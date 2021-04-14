@@ -36,7 +36,11 @@ vehicleRoutes.route('/').get(function(request, response){
 vehicleRoutes.route('/:id').get(function(request, response){
     let vehicleId = request.params.id;
     Vehicle.findById(vehicleId, function(err, selectedVehicle){
-        response.json(selectedVehicle);
+        if(err){
+            console.log(err);
+        } else {
+            response.json(selectedVehicle);
+        }
     });
 });
 

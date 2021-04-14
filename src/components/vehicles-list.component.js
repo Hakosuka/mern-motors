@@ -2,36 +2,11 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import VehicleRow from './vehicle-row.component';
 
 //TODO: Implement search filters
-//This formats the Vehicle data for the table which will show the Vehicles.
-function Vehicle(props){
-	return(
-		<tr>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_make}
-			</td>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_model}
-			</td>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_year}
-			</td>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_price}
-			</td>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_description}
-			</td>
-			<td className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
-				{props.vehicle.vehicle_fuel}
-			</td>
-			<td>
-				<Link to={"/edit/"+props.vehicle._id}>Edit</Link>
-			</td>
-		</tr>
-	);
-}
+//TODO: Figure out why the description doesn't get automatically updated in the table, but other attributes do.
+
 export default class VehiclesList extends Component {
 	constructor(props){
 		super(props);
@@ -56,7 +31,7 @@ export default class VehiclesList extends Component {
 		console.log("Accessing vehicle list");
 		return this.state.vehicles.map(function(currentVehicle, listIndex){
 			console.log(currentVehicle);
-			return <Vehicle vehicle={currentVehicle} key={listIndex}/>;
+			return <VehicleRow vehicle={currentVehicle} key={listIndex}/>;
 		})
 	}
 	/**

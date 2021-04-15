@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import CreateVehicle from "./components/create-vehicle.component";
 import EditVehicle from "./components/edit-vehicle.component";
 import VehiclesList from "./components/vehicles-list.component";
+import FilterableVehicleList from "./components/filterable-vehicle-list.component";
 
 //import logo from "./logo.png";
 //import logo from "./logo.png";
@@ -29,7 +30,7 @@ class App extends Component {
 						</div>
 					</nav>
 				<br/>
-				<Route path="/" exact component={VehiclesList} />
+				<Route path="/" exact component={FilterableVehicleList} />
 				<Route path="/edit/:id" component={EditVehicle} />
 				<Route path="/add" component={CreateVehicle} />
 				</div>

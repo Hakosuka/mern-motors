@@ -6,28 +6,29 @@ import { Link } from 'react-router-dom';
  * @param {*} props 
  */
 const VehicleRow = (props) => {
+    const { vehicle } = props;
     return(
-        <tr className={props.vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
+        <tr className={vehicle.vehicle_sold ? 'vehicle_sold' : ''}>
 			<td>
-				{props.vehicle.vehicle_make}
+				{vehicle.vehicle_make}
 			</td>
 			<td>
-				{props.vehicle.vehicle_model}
+				{vehicle.vehicle_model}
 			</td>
 			<td>
-				{props.vehicle.vehicle_year}
+				{vehicle.vehicle_year}
 			</td>
 			<td>
-				{props.vehicle.vehicle_price}
+				{vehicle.vehicle_price}
 			</td>
 			<td>
-				{props.vehicle.vehicle_description}
+				{vehicle.vehicle_description}
 			</td>
 			<td>
-				{props.vehicle.vehicle_fuel}
+				{vehicle.vehicle_fuel}
 			</td>
 			<td>
-				<Link to={"/edit/"+props.vehicle._id}>Edit</Link>
+				<Link to={"/edit/"+vehicle._id}>Edit</Link>
 			</td>
 		</tr>
     );

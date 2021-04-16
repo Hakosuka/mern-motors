@@ -9,35 +9,27 @@ import VehicleListFilter from './vehicles-filter.component';
 //TODO: Figure out why the description doesn't get automatically updated in the table, but other attributes do.
 
 export default class VehiclesList extends Component {
-	constructor(props){
-		super(props);
-		
-		const vehicles = this.props.vehicles;
-
-	}
-	/**
-	 * This accesses the retrieved Vehicle objects and renders them in a list.
-	 * @returns the list of Vehicles
-	 */
-	vehicleList() {
-		console.log("Accessing vehicle list");
-		return this.props.vehicles.map(function(currentVehicle, listIndex){
-			console.log(currentVehicle);
-			//console.log(this.state.selected_make);
-			return <VehicleRow vehicle={currentVehicle} key={listIndex}/>;
-		})
-	}
-	
-	//Set up onChange bindings
-	onChangeVehicleMakeFilter(e){
-		console.log(e.target.value);
-		this.setState({
-			selected_make: e.target.value
-		});
-	}
 	//TODO: Implement a way for the user to pick an attribute to sort by
 	//TODO: Implement a filter for results
 	render(){
+		const selectedMake = this.props.selectedMake;
+		const isFilterApplied = this.props.isFilterApplied;
+		console.log("Filter applied? " + isFilterApplied); 
+		console.log("Selected make: " + selectedMake);
+		
+		const vehicleRows = [];
+		console.log("Accessing vehicle list");
+		
+		this.props.vehicles.map((element) => {
+			if(isFilterApplied && element.vehicle_make != selectedMake){
+				console.log("This " + element.vehicle_make + " " + element.vehicle_model + " isn't made by the selected manufacturer");
+				return;
+			} else {
+				vehicleRows.push(
+					<VehicleRow vehicle={element} key={element._id}/>
+				);
+			}
+		});
 		return(
 			<div>
 				<h3>Vehicles List</h3>
@@ -54,7 +46,7 @@ export default class VehiclesList extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{ this.vehicleList() }
+						{ vehicleRows }
 					</tbody>
 				</table>
 			</div>

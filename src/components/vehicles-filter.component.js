@@ -5,16 +5,22 @@ import { Form, Button } from 'react-bootstrap';
 export default class VehicleListFilter extends Component {
     constructor(props) {
         super(props);
-        this.state = { selectedMake: ''};
+        this.state = { selectedMake: '', isFilterApplied: false};
+        this.handleApplyFilterClick = this.handleApplyFilterClick.bind(this);
         this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
     }
 
-    handleSelectedMakeChange = selectedMake => {
+    handleSelectedMakeChange =selectedMake => {
         this.setState(
             { selectedMake },
             () => console.log(`Option selected: `, this.state.selectedMake.value)
         );
     };
+
+    handleApplyFilterClick() {
+        this.setState({isFilterApplied: !this.state.isFilterApplied});
+        console.log("Is filter active? " + this.state.isFilterApplied);
+    }
     /**
 	 * This uses the database to populate a dropdown menu with the makes of the vehicles in the DB.
 	 * @returns the list of Vehicle makes
@@ -55,7 +61,8 @@ export default class VehicleListFilter extends Component {
                     onChange={this.handleSelectedMakeChange}
                     options={this.vehicleMakesList()}
                 />
-                <Button variant="primary" type="submit">Apply filter</Button>
+                <Button variant="primary" type="submit" onClick={this.handleApplyFilterClick}>
+                    { this.state.isFilterApplied ? 'Remove filter' : 'Apply filter'}</Button>
             </div>
         )
     }

@@ -13,15 +13,14 @@ export default class VehiclesList extends Component {
 	//TODO: Implement a filter for results
 	render(){
 		const selectedMake = this.props.selectedMake;
-		const isFilterApplied = this.props.isFilterApplied;
-		console.log("Filter applied? " + isFilterApplied); 
 		console.log("Selected make: " + selectedMake);
-		
+
 		const vehicleRows = [];
 		console.log("Accessing vehicle list");
 		
 		this.props.vehicles.map((element) => {
-			if(isFilterApplied && element.vehicle_make != selectedMake){
+			//Check if this vehicle matches the filter criteria
+			if(selectedMake && element.vehicle_make != selectedMake){
 				console.log("This " + element.vehicle_make + " " + element.vehicle_model + " isn't made by the selected manufacturer");
 				return;
 			} else {

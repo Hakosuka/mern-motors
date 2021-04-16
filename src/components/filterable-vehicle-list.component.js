@@ -12,16 +12,15 @@ export default class FilterableVehicleList extends Component {
         
         this.state = {
             vehicles: [],
-            selectedMake: '',
-            isFilterApplied: false
+            selectedMake: ''
         };
 
         this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
-        this.handleApplyFilterClick = this.handleApplyFilterClick.bind(this);
         this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
     }
 
     handleSelectedMakeChange(selectedMake){
+        console.log("Selected make filter updated to: " + selectedMake);
         this.setState({ selectedMake: selectedMake });
     }
 
@@ -44,14 +43,11 @@ export default class FilterableVehicleList extends Component {
                 <VehicleListFilter
                     vehicles={this.state.vehicles}
                     selectedMake={this.state.selectedMake}
-                    isFilterApplied={this.state.isFilterApplied}
                     onSelectedMakeChange={this.handleSelectedMakeChange}
-                    onIsFilterAppliedChange={this.handleApplyFilterClick}
                     />
                 <VehiclesList
                     vehicles={this.state.vehicles}
                     selectedMake={this.state.selectedMake}
-                    isFilterApplied={this.state.isFilterApplied}
                     />
             </div>
         );

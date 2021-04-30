@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import VehiclesList from './vehicles-list.component';
-import VehicleRow from './vehicle-row.component';
-import VehicleListFilter from './vehicles-filter.component';
+import InputRange from 'react-input-range';
+import VehiclesList from './vehicle-list.component';
+import VehicleListFilter from './vehicle-list-filter.component';
 
 export default class FilterableVehicleList extends Component {
     constructor(props) {
@@ -12,10 +12,10 @@ export default class FilterableVehicleList extends Component {
         
         this.state = {
             vehicles: [],
-            selectedMake: ''
+            selectedMake: ''//,
+            //selectedYears: {min: 0, max: 0}
         };
 
-        this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
         this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
     }
 
@@ -37,9 +37,18 @@ export default class FilterableVehicleList extends Component {
 			})
 	}
 
+    /*getOldestCarYear(){
+        vehicles = this.state.vehicles;
+
+    }*/
     render() {
         return(
             <div>
+                {/*<InputRange
+                    maxValue={Date.now()}
+                    minValue={}
+                    value={this.state.selectedYears}
+                    onChange={value => this.setState({selectedYears: value})}/>*/}
                 <VehicleListFilter
                     vehicles={this.state.vehicles}
                     selectedMake={this.state.selectedMake}
@@ -48,6 +57,7 @@ export default class FilterableVehicleList extends Component {
                 <VehiclesList
                     vehicles={this.state.vehicles}
                     selectedMake={this.state.selectedMake}
+                    selectedYears={this.state.selectedYears}
                     />
             </div>
         );

@@ -3,14 +3,13 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import VehicleRow from './vehicle-row.component';
-import VehicleListFilter from './vehicles-filter.component';
+import VehicleListFilter from './vehicle-list-filter.component';
 
 //TODO: Implement search filters
 //TODO: Figure out why the description doesn't get automatically updated in the table, but other attributes do.
 
 export default class VehiclesList extends Component {
 	//TODO: Implement a way for the user to pick an attribute to sort by
-	//TODO: Implement a filter for results
 	render(){
 		const selectedMake = this.props.selectedMake;
 		console.log("Selected make: " + selectedMake);
@@ -21,7 +20,7 @@ export default class VehiclesList extends Component {
 		this.props.vehicles.map((element) => {
 			//Check if this vehicle matches the filter criteria
 			if(selectedMake && element.vehicle_make != selectedMake){
-				console.log("This " + element.vehicle_make + " " + element.vehicle_model + " isn't made by the selected manufacturer");
+				//This car doesn't match the filter criteria.
 				return;
 			} else {
 				vehicleRows.push(

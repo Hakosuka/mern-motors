@@ -24,7 +24,6 @@ export default class VehicleListFilter extends Component {
     /**
 	 * This uses the database to populate a dropdown menu with the makes of the vehicles in the DB.
 	 * @returns the list of Vehicle makes
-	 * TODO: Use the selected option to filter results from the DB
 	 */
 	vehicleMakesList(){
         const vehicleMakes = [];
@@ -39,19 +38,6 @@ export default class VehicleListFilter extends Component {
             value: make
         }));
 	}
-    /**TODO: vehicleYearsList(){
-        const vehicleYears = [];
-        this.props.vehicles.forEach(vehicle => {
-            //Check if this vehicle's make is already listed
-            if(vehicleMakes.indexOf(vehicle.vehicle_year) === -1)
-                //It's not in the list, so let's add it
-                vehicleMakes.push(vehicle.vehicle_year);
-        });
-        return vehicleMakes.map(year => ({
-            label: year,
-            value: year
-        }));
-    }**/
     render(){
         const { selectedMake } = this.state;
         return(

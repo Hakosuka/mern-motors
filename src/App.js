@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import CreateVehicle from "./components/create-vehicle.component";
 import EditVehicle from "./components/edit-vehicle.component";
-import VehiclesList from "./components/vehicle-list.component";
 import FilterableVehicleList from "./components/filterable-vehicle-list.component";
 
 //import logo from "./logo.png";

@@ -10,8 +10,10 @@ let Vehicle = new Schema({
     },
     vehicle_year: {
         type: Number, 
+        //Stop the user from entering a car older than Karl Benz's Patentwagen
         min: 1886, 
-        max: Date.now(),
+        //Stop the user from entering a car from the future
+        max: new Date().getFullYear(),
         default: 1970
     },
     vehicle_price: {

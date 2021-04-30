@@ -12,11 +12,12 @@ export default class FilterableVehicleList extends Component {
         
         this.state = {
             vehicles: [],
-            selectedMake: ''//,
-            //selectedYears: {min: 0, max: 0}
+            selectedMake: '',
+            selectedYears: {min: 1886, max: new Date().getFullYear()}
         };
 
         this.handleSelectedMakeChange = this.handleSelectedMakeChange.bind(this);
+        this.handleSelectedYearsChange = this.handleSelectedYearsChange.bind(this);
     }
 
     handleSelectedMakeChange(selectedMake){
@@ -24,35 +25,28 @@ export default class FilterableVehicleList extends Component {
         this.setState({ selectedMake: selectedMake });
     }
 
-    handleApplyFilterClick(isFilterApplied) {
-        this.setState({ isFilterApplied: isFilterApplied });
+    handleSelectedYearsChange(selectedYears){
+        console.log("Selected years updated to: " + selectedYears.min + "-" + selectedYears.max);
+        this.setState({selectedYears: { min: selectedYears.min, max: selectedYears.max}});
     }
-
 	componentDidMount(){
 		axios.get('http://localhost:4008/vehicles')
 			.then(response => {
-				this.setState({ vehicles: response.data});
+				this.setState({ vehicles: response.data });
 			}).catch(function(error){
 				console.log(error);
 			})
 	}
 
-    /*getOldestCarYear(){
-        vehicles = this.state.vehicles;
-
-    }*/
     render() {
         return(
             <div>
-                {/*<InputRange
-                    maxValue={Date.now()}
-                    minValue={}
-                    value={this.state.selectedYears}
-                    onChange={value => this.setState({selectedYears: value})}/>*/}
                 <VehicleListFilter
                     vehicles={this.state.vehicles}
                     selectedMake={this.state.selectedMake}
                     onSelectedMakeChange={this.handleSelectedMakeChange}
+                    selectedYears={this.state.selectedYears}
+                    onSelectedYearsChange={this.handleSelectedYearsChange}
                     />
                 <VehiclesList
                     vehicles={this.state.vehicles}
